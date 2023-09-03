@@ -13,4 +13,5 @@ async function loadPokemon() {
 
 function renderPokemonInfo() {
     document.getElementById('pokemonName').innerHTML = currentPokemon['name'];
+    document.getElementById('pokemon-img').innerHTML = `<img src="${currentPokemon['sprites']['other']['official-artwork']['front_default']}" class="pokemon-img">`;
 }

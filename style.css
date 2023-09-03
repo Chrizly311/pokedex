@@ -7,3 +7,11 @@ body {
     background-color: #e01111;
     color: white;
 }
+
+#pokemonName {
+    text-transform: capitalize;
+}
+
+.pokemon-img {
+    width: 200px;
+}
