@@ -76,3 +76,14 @@ p {
     min-height: 100px;
     margin-top: -40px;
 }
+
+.sections {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+}
+
+.section:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
