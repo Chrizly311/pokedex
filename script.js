@@ -2,7 +2,7 @@ let currentPokemon;
 
 
 async function loadPokemon() {
-    let url = 'https://pokeapi.co/api/v2/pokemon/charmander';
+    let url = 'https://pokeapi.co/api/v2/pokemon/4';
     let response = await fetch(url);
     currentPokemon = await response.json();
     console.log('Loaded Pokemon', currentPokemon);
@@ -38,23 +38,23 @@ function sectionAbout() {
 
 function sectionBaseStats() {
     document.getElementById('section-basestats').innerHTML = /*html*/`
-        <div class="species flex-container">
-                <div>HP</div><div>${currentPokemon['stats']['0']['base_stat']}</div>
+            <div class="species flex-container">
+                    <div>HP</div><div>${currentPokemon['stats']['0']['base_stat']}</div>
+                </div>
+            <div class="flex-container">
+                <div>Attack</div><div>${currentPokemon['stats']['1']['base_stat']}</div>
             </div>
-        <div class="flex-container">
-            <div>Attack</div><div>${currentPokemon['stats']['1']['base_stat']}</div>
-        </div>
-        <div class="flex-container">
-            <div>Defense</div><div>${currentPokemon['stats']['2']['base_stat']}</div>
-        </div>
-        <div class="flex-container">
-            <div>Sp. Atk</div><div>${currentPokemon['stats']['3']['base_stat']}</div>
-        </div>
-        <div class="flex-container">
-            <div>Sü. Def.</div><div>${currentPokemon['stats']['4']['base_stat']}</div>
-        </div>
-        <div class="flex-container">
-            <div>Speed</div><div>${currentPokemon['stats']['5']['base_stat']}</div>
-        </div>
+            <div class="flex-container">
+                <div>Defense</div><div>${currentPokemon['stats']['2']['base_stat']}</div>
+            </div>
+            <div class="flex-container">
+                <div>Sp. Atk</div><div>${currentPokemon['stats']['3']['base_stat']}</div>
+            </div>
+            <div class="flex-container">
+                <div>Sü. Def.</div><div>${currentPokemon['stats']['4']['base_stat']}</div>
+            </div>
+            <div class="flex-container">
+                <div>Speed</div><div>${currentPokemon['stats']['5']['base_stat']}</div>
+            </div>
     `;
 }
