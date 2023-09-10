@@ -80,7 +80,7 @@ p {
     padding-top: 20px;
 }
 
-.section:hover {
+.about:hover {
     cursor: pointer;
     opacity: 0.6;
 }

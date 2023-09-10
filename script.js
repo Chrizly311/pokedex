@@ -9,6 +9,7 @@ async function loadPokemon() {
 
     renderPokemonInfo();
     sectionAbout();
+    sectionBaseStats();
 }
 
 
@@ -32,6 +33,28 @@ function sectionAbout() {
     </div>
     <div class="abilities flex-container">
         <div>Abilities</div><div>${currentPokemon['abilities']['0']['ability']['name']}</div>
-    </div>
+    </div>`;
+}
+
+function sectionBaseStats() {
+    document.getElementById('section-basestats').innerHTML = /*html*/`
+         <div class="species flex-container">
+            <div>HP</div><div>${currentPokemon['stats']['0']['base_stat']}</div>
+        </div>
+        <div class="flex-container">
+        <div>Attack</div><div>${currentPokemon['stats']['1']['base_stat']}</div>
+        </div>
+        <div class="flex-container">
+        <div>Defense</div><div>${currentPokemon['stats']['2']['base_stat']}</div>
+        </div>
+        <div class="flex-container">
+        <div>Sp. Atk</div><div>${currentPokemon['stats']['3']['base_stat']}</div>
+        </div>
+        <div class="flex-container">
+        <div>Sü. Def.</div><div>${currentPokemon['stats']['4']['base_stat']}</div>
+        </div>
+        <div class="flex-container">
+        <div>Speed</div><div>${currentPokemon['stats']['5']['base_stat']}</div>
+        </div>
     `;
 }
