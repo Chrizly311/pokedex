@@ -58,3 +58,19 @@ function sectionBaseStats() {
             </div>
     `;
 }
+
+function baseStatsVisible() {
+    let base = document.getElementById('section-basestats');
+    let about = document.getElementById('section-about');
+
+    base.classList.remove('d-none');
+    about.classList.add('d-none');
+}
+
+function aboutStatsVisible() {
+    let base = document.getElementById('section-basestats');
+    let about = document.getElementById('section-about');
+
+    about.classList.remove('d-none');
+    base.classList.add('d-none');
+}
