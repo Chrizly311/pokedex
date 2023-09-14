@@ -1,8 +1,70 @@
+let pokeColors = [  
+{ "Typ": "Bug",
+  "Farben": "#008000"
+},
+{
+  "Typ": "Dragon",
+  "Farben": "#0000FF"
+},
+{
+  "Typ": "Electric",
+  "Farben": "#FFFF00"
+},
+{
+  "Typ": "Fighting",
+  "Farben": "#FF0000"
+},
+{
+  "Typ": "Fire",
+  "Farben": "#FF0000"
+},
+{
+  "Typ": "Flying",
+  "Farben": "#0000FF"
+},
+{
+  "Typ": "Ghost",
+  "Farben": "#800080"
+},
+{
+  "Typ": "Grass",
+  "Farben": "#008000"
+},
+{
+  "Typ": "Ground",
+  "Farben": "#A52A2A"
+},
+{
+  "Typ": "Ice",
+  "Farben": "#0000FF"
+},
+{
+  "Typ": "Normal",
+  "Farben": "#F5F5DC"
+},
+{
+  "Typ": "Poison",
+  "Farben": "#800080"
+},
+{
+  "Typ": "Psychic",
+  "Farben": "#FFC0CB"
+},
+{
+  "Typ": "Rock",
+  "Farben": "#808080"
+},
+{
+  "Typ": "Water",
+  "Farben": ["#0000FF"]
+}
+];
+
 let currentPokemon;
+
 
 async function loadPokemon() {
   for (let i = 1; i <= 151; i++) {
-
     let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
     let response = await fetch(url);
     currentPokemon = await response.json();
@@ -24,7 +86,7 @@ function pokeContent() {
     </div>
     <img src="${currentPokemon["sprites"]["other"]["official-artwork"]["front_default"]}" id="pokemon-img" class="pokemon-img">
   </div>
-  <div id="container-info">
+  <div id="container-info" >
     <div class="section">
       <h3 onclick="aboutStatsVisible()" id="about" class="stats">About</h3>
       <div id="section-about" class="sections">
@@ -65,7 +127,7 @@ function pokeContent() {
       <div>${currentPokemon["stats"]["3"]["base_stat"]}</div>
     </div>
     <div class="flex-container">
-      <div>Sü. Def.:</div>
+      <div>Sp. Def.:</div>
       <div>${currentPokemon["stats"]["4"]["base_stat"]}</div>
     </div>
     <div class="flex-container">
@@ -77,7 +139,10 @@ function pokeContent() {
   </div>
 </div>
     `;
+
+changeColor();
 }
+
 
 function baseStatsVisible() {
   let base = document.getElementById(`section-basestats`)
@@ -87,10 +152,22 @@ function baseStatsVisible() {
   about.classList.add("d-none");
 }
 
+
 function aboutStatsVisible() {
   let base = document.getElementById(`section-basestats`)
   let about = document.getElementById(`section-about`)
 
   about.classList.remove("d-none");
   base.classList.add("d-none");
+}
+
+
+function changeColor() {
+  let typeColor = pokeColors["Farben"];
+  let type = pokeColors["Typ"];
+  let pokemonType = document.getElementById('pokeType').innerHTML;
+
+  if(pokemonType === type) {
+    document.getElementById('pokedex').style.backgroundColor = `${typeColor}`;
+    }
 }
