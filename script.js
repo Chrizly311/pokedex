@@ -28,7 +28,7 @@ let pokeColors = [
 },
 {
   "Typ": "Grass",
-  "Farben": "#008000"
+  "Farben": "green"
 },
 {
   "Typ": "Ground",
@@ -70,6 +70,7 @@ async function loadPokemon() {
     currentPokemon = await response.json();
     console.log("Loaded Pokemon", currentPokemon);
     pokeContent();
+    changeColor();
   }
 }
 
@@ -139,8 +140,6 @@ function pokeContent() {
   </div>
 </div>
     `;
-
-changeColor();
 }
 
 
