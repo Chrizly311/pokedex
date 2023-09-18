@@ -1,61 +1,61 @@
 let pokeColors = [  
-{ "Typ": "Bug",
+{ "Typ": "bug",
   "Farben": "#008000"
 },
 {
-  "Typ": "Dragon",
+  "Typ": "dragon",
   "Farben": "#0000FF"
 },
 {
-  "Typ": "Electric",
+  "Typ": "electric",
   "Farben": "#FFFF00"
 },
 {
-  "Typ": "Fighting",
+  "Typ": "fighting",
   "Farben": "#FF0000"
 },
 {
-  "Typ": "Fire",
+  "Typ": "fire",
   "Farben": "#FF0000"
 },
 {
-  "Typ": "Flying",
+  "Typ": "flying",
   "Farben": "#0000FF"
 },
 {
-  "Typ": "Ghost",
+  "Typ": "ghost",
   "Farben": "#800080"
 },
 {
-  "Typ": "Grass",
+  "Typ": "grass",
   "Farben": "green"
 },
 {
-  "Typ": "Ground",
+  "Typ": "ground",
   "Farben": "#A52A2A"
 },
 {
-  "Typ": "Ice",
+  "Typ": "ice",
   "Farben": "#0000FF"
 },
 {
-  "Typ": "Normal",
+  "Typ": "normal",
   "Farben": "#F5F5DC"
 },
 {
-  "Typ": "Poison",
+  "Typ": "poison",
   "Farben": "#800080"
 },
 {
-  "Typ": "Psychic",
+  "Typ": "psychic",
   "Farben": "#FFC0CB"
 },
 {
-  "Typ": "Rock",
+  "Typ": "rock",
   "Farben": "#808080"
 },
 {
-  "Typ": "Water",
+  "Typ": "water",
   "Farben": ["#0000FF"]
 }
 ];
@@ -70,13 +70,13 @@ async function loadPokemon() {
     currentPokemon = await response.json();
     console.log("Loaded Pokemon", currentPokemon);
     pokeContent();
-    changeColor();
+    
   }
 }
 
-function pokeContent() {
-  document.getElementById("pokecontent").innerHTML += /*html*/ `    
-<div id="pokedex">
+function pokeContent(x) {
+ document.getElementById("pokecontent").innerHTML += /*html*/ `    
+  <div id="pokedex${x}">
   <div class="poke-header">
     <div class="header-details">
       <h1 id="pokemonName">${currentPokemon["name"]}</h1>
@@ -140,6 +140,7 @@ function pokeContent() {
   </div>
 </div>
     `;
+    changeColor(x)
 }
 
 
@@ -161,12 +162,14 @@ function aboutStatsVisible() {
 }
 
 
-function changeColor() {
-  let typeColor = pokeColors["Farben"];
-  let type = pokeColors["Typ"];
-  let pokemonType = document.getElementById('pokeType').innerHTML;
 
-  if(pokemonType === type) {
-    document.getElementById('pokedex').style.backgroundColor = `${typeColor}`;
+
+function changeColor(x) {
+  let pokemonType = document.getElementById('poketype').innerHTML;
+
+  for (let i = 0; i < pokeColors.length; i++) {
+    if (pokeColors[i].Typ === pokemonType) {
+        document.getElementById(`pokedex${x}`).style.backgroundColor = pokeColors[i]["Farben"];
+       }
     }
-}
+  }
