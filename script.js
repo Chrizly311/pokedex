@@ -1,64 +1,3 @@
-let pokeColors = [  
-{ "Typ": "bug",
-  "Farben": "#008000"
-},
-{
-  "Typ": "dragon",
-  "Farben": "#0000FF"
-},
-{
-  "Typ": "electric",
-  "Farben": "#FFFF00"
-},
-{
-  "Typ": "fighting",
-  "Farben": "#FF0000"
-},
-{
-  "Typ": "fire",
-  "Farben": "#FF0000"
-},
-{
-  "Typ": "flying",
-  "Farben": "#0000FF"
-},
-{
-  "Typ": "ghost",
-  "Farben": "#800080"
-},
-{
-  "Typ": "grass",
-  "Farben": "green"
-},
-{
-  "Typ": "ground",
-  "Farben": "#A52A2A"
-},
-{
-  "Typ": "ice",
-  "Farben": "#0000FF"
-},
-{
-  "Typ": "normal",
-  "Farben": "#F5F5DC"
-},
-{
-  "Typ": "poison",
-  "Farben": "#800080"
-},
-{
-  "Typ": "psychic",
-  "Farben": "#FFC0CB"
-},
-{
-  "Typ": "rock",
-  "Farben": "#808080"
-},
-{
-  "Typ": "water",
-  "Farben": ["#0000FF"]
-}
-];
 
 let currentPokemon;
 
@@ -69,14 +8,13 @@ async function loadPokemon() {
     let response = await fetch(url);
     currentPokemon = await response.json();
     console.log("Loaded Pokemon", currentPokemon);
-    pokeContent();
-    
+    pokeContent();  
   }
 }
 
-function pokeContent(x) {
+function pokeContent() {
  document.getElementById("pokecontent").innerHTML += /*html*/ `    
-  <div id="pokedex${x}">
+  <div id="pokedex" class="${currentPokemon["types"]["0"]["type"]["name"]}">
   <div class="poke-header">
     <div class="header-details">
       <h1 id="pokemonName">${currentPokemon["name"]}</h1>
@@ -140,7 +78,6 @@ function pokeContent(x) {
   </div>
 </div>
     `;
-    changeColor(x)
 }
 
 
@@ -163,13 +100,15 @@ function aboutStatsVisible() {
 
 
 
-
-function changeColor(x) {
-  let pokemonType = document.getElementById('poketype').innerHTML;
+/* function changeColor(x, y) {
+  let pokemonType = document.getElementById(`poketype${x}`).innerHTML;
+  let typeColor = pokeColors[i]["Farben"]
 
   for (let i = 0; i < pokeColors.length; i++) {
     if (pokeColors[i].Typ === pokemonType) {
-        document.getElementById(`pokedex${x}`).style.backgroundColor = pokeColors[i]["Farben"];
+        document.getElementById(`pokedex${y}`).style.backgroundColor = typeColor;
        }
     }
   }
+
+  */
