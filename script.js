@@ -97,18 +97,3 @@ function aboutStatsVisible() {
   about.classList.remove("d-none");
   base.classList.add("d-none");
 }
-
-
-
-/* function changeColor(x, y) {
-  let pokemonType = document.getElementById(`poketype${x}`).innerHTML;
-  let typeColor = pokeColors[i]["Farben"]
-
-  for (let i = 0; i < pokeColors.length; i++) {
-    if (pokeColors[i].Typ === pokemonType) {
-        document.getElementById(`pokedex${y}`).style.backgroundColor = typeColor;
-       }
-    }
-  }
-
-  */
