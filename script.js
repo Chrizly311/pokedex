@@ -1,4 +1,3 @@
-
 let currentPokemon;
 
 
@@ -8,11 +7,11 @@ async function loadPokemon() {
     let response = await fetch(url);
     currentPokemon = await response.json();
     console.log("Loaded Pokemon", currentPokemon);
-    pokeContent();  
+    await pokeContent(i);  
   }
 }
 
-function pokeContent() {
+function pokeContent(i) {
  document.getElementById("pokecontent").innerHTML += /*html*/ `    
   <div id="pokedex" class="${currentPokemon["types"]["0"]["type"]["name"]}">
   <div class="poke-header">
@@ -25,10 +24,10 @@ function pokeContent() {
     </div>
     <img src="${currentPokemon["sprites"]["other"]["official-artwork"]["front_default"]}" id="pokemon-img" class="pokemon-img">
   </div>
-  <div id="container-info" >
+  <div id="container-info">
     <div class="section">
-      <h3 onclick="aboutStatsVisible()" id="about" class="stats">About</h3>
-      <div id="section-about" class="sections">
+      <h3 onclick="aboutStatsVisible(${i})" id="about" class="stats">About</h3>
+      <div id="section-about${i}" class="sections">
       <div class="species flex-container">
       <div>Species:</div><div>${currentPokemon["types"]["0"]["type"]["name"]}</div>
     </div>
@@ -47,8 +46,8 @@ function pokeContent() {
       </div>
     </div>
     <div class="section">
-      <h3 onclick="baseStatsVisible()" id="baseStats" class="stats">Base Stats</h3>
-      <div id="section-basestats" class="sections d-none">
+      <h3 onclick="baseStatsVisible(${i})" id="baseStats" class="stats">Base Stats</h3>
+      <div id="section-basestats${i}" class="sections d-none">
       <div class="flex-container">
         <div>HP:</div>
         <div>${currentPokemon["stats"]["0"]["base_stat"]}</div>
@@ -81,18 +80,18 @@ function pokeContent() {
 }
 
 
-function baseStatsVisible() {
-  let base = document.getElementById(`section-basestats`)
-  let about = document.getElementById(`section-about`)
+function baseStatsVisible(i) {
+  let base = document.getElementById(`section-basestats${i}`)
+  let about = document.getElementById(`section-about${i}`)
 
   base.classList.remove("d-none");
   about.classList.add("d-none");
 }
 
 
-function aboutStatsVisible() {
-  let base = document.getElementById(`section-basestats`)
-  let about = document.getElementById(`section-about`)
+function aboutStatsVisible(i) {
+  let base = document.getElementById(`section-basestats${i}`)
+  let about = document.getElementById(`section-about${i}`)
 
   about.classList.remove("d-none");
   base.classList.add("d-none");
